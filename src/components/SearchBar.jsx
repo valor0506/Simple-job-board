@@ -11,7 +11,7 @@ export default function SearchBar({
 }) {
   return (
     <div 
-      className="fade-in"
+      className="fade-in search-bar-grid"
       style={{
         background: 'var(--bg-secondary)',
         border: '1px solid var(--border-color)',
@@ -24,7 +24,6 @@ export default function SearchBar({
         marginBottom: '2rem',
         transition: 'all var(--transition-speed)'
       }}
-      className="search-bar-grid"
     >
       {/* Title / Keywords Search */}
       <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
