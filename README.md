@@ -6,6 +6,22 @@ This project was built for the Software Engineer assessment, satisfying all crit
 
 ---
 
+## 🧠 Production Architecture & Backend Crossover (Scalability Note)
+
+> [!NOTE]
+> **To Recruiters & Reviewers:** While this is a frontend-only Single Page Application (SPA) designed to be fully self-contained for local running and Vercel testing, it has been structured with production scalability in mind.
+
+### 1. In-Memory Data vs. Server-Side Fetching
+*   **Current State:** The job database is initialized using mock data in [mockJobs.js](file:///c:/Users/suvan/Desktop/Job%20Board%20-%20GlobalCo/src/data/mockJobs.js) and is stored in the browser's memory via React state, syncing updates to `localStorage` (bookmarks, application statuses, and new employer listings).
+*   **Production Transition:** In a live environment, loading the entire job dataset into client RAM creates severe scaling constraints. Instead, we would connect the frontend to a REST or GraphQL API using the browser's `fetch()` API or `axios` inside a `useEffect` hook.
+
+### 2. Search & Filtering Optimization
+*   **Current State:** Search, categorization, salary filtering, and sorting are executed in-memory in the rendering loop using JavaScript array methods (`filter()`, `map()`, `sort()`).
+*   **Production Transition:** We would offload filtering and search to a backend database (using database indexes, pagination parameters like `page` and `limit`, or full-text search engines like Elasticsearch) to reduce client load and memory consumption.
+
+---
+
+
 ## ✨ Outstanding Features
 
 - **🌐 Live Search & Advanced Filter Controls**: Filter immediately by job category, type, remote/onsite model, and minimum salary. Real-time list updates execute with zero latency.
